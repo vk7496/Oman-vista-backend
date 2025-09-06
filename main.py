@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -11,4 +12,5 @@ def map_service():
     return jsonify({"map": "Map service placeholder 🌍"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    port = int(os.environ.get("PORT", 8080))  # Railway پورت خودش رو میده
+    app.run(host="0.0.0.0", port=port)
