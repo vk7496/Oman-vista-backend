@@ -1,14 +1,17 @@
 # Oman-vista-backend
 AI assistant Tourism in Oman
-# OmanVista Backend 🌴
+# OmanVista Backend (minimal)
 
-This is the backend service for **OmanVista – AI Tourism Explorer**.  
-It provides an API to fetch photos and other tourism-related data.
+Endpoints:
+- GET `/`          -> health
+- GET `/images?q=Muscat&per=6` -> images (Pexels -> Unsplash fallback)
+- GET `/reddit?topic=Oman travel&limit=6` -> reddit posts via RSS
 
-## Endpoints
-- `/` → health check
-- `/photos?query=Salalah` → fetch tourism photos
+Deploy (Railway):
+1. Push repo to GitHub.
+2. In Railway create New Project -> Deploy from GitHub -> select this repo.
+3. In Railway Service -> Variables add:
+   - PEXELS_API_KEY
+   - UNSPLASH_SECRET_KEY
+4. Deploy. Use the generated domain (e.g. https://your-app.up.railway.app).
 
-## Run locally
-```bash
-uvicorn main:app --reload --port 8000
